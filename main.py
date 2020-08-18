@@ -1,4 +1,4 @@
-#import multiprocessing as mp
+import multiprocessing as mp
 import time
 import ctypes
 import sounddevice as sd
