@@ -61,8 +61,48 @@ def main():
         # plot(packet[:,[15,40]], samplerate, "before")
         packet = data_synch.apply(packet)
         # plot(packet[:,[15,40]], samplerate, 'after')
-        detection_l1(packet, samplerate, eng)
-        subband_processing(packet, samplerate)
+
+        w = weight_updater(packet, eng)
+        suspect_angs = pScan(w, packet, eng)
+        for ang in suspect_angs:
+            if check_black_list(ang):
+                continue
+            lock_on_ang(packet, ang, eng)
+
+
+def check_black_list(ang):
+    #todo there should be a list of angles that previously checked and we sure there is no quad in them, although they seemed suspicious
+
+    #1- load list
+    #2- if ang is available in list return 1 else return 0
+    #point: we can give it some knowledge, e.g if ang is in a range, probably it can not be an interference and vice versa
+    print()
+
+def lock_on_ang(packet, ang, eng):
+    #todo lock on ang for some second to see whether there is quad or not
+
+    #0- data should be read from FiFo in time
+    #1- check ang for some second (probably freq/time data)
+    #2- if data is similar to quad data, track it and alarm
+    print()
+
+def pScan(w, packet, eng):
+    #todo powerscan for different angles and different frequecies
+
+    #1- Separate signal in different bands
+    #2- apply weights on narrowed signal
+    #3- create power_scan array for each frequency
+    #4- extract and return suspect angles
+    print()
+
+
+
+def weight_updater(packet, eng):
+    #todo must bring back updated weights
+
+    # maybe it is not needed to be updated for everypacket
+    print()
+
 
 def plot(packet, fs, title):
     lenn, chNum = packet.shape

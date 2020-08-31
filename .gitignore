@@ -140,4 +140,5 @@ cython_debug/
 /..matf_figs/
 /.other_modules/
 /lcmv/
-/.test1.py
+/.test1.py/
+/.test.py
