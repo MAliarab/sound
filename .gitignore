@@ -1,0 +1,12 @@
+
+__pycache__/
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+.idea
+Trained-Model/drone-detection-v5.h5
